@@ -1,0 +1,12 @@
+name: fixture
+
+# Runs only by hand. One run leaves a completed, successful check run named
+# "fixture" on the commit it ran on. The dotnet-software-factory integration
+# test reads that check run; nothing else here runs a workflow.
+on: workflow_dispatch
+
+jobs:
+  fixture:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "check-run fixture for dotnet-software-factory"
