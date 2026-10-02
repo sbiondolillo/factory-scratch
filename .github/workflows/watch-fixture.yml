@@ -1,0 +1,27 @@
+name: watch-fixture
+
+# Runs on a pull request whose diff touches watch-fixture/. It leaves two
+# check runs on the head commit of that pull request: "build", which is in
+# progress for about 15 seconds, and "skipped". "build" fails when the name of
+# the head branch starts with watch-red/, and passes for every other name.
+# The dotnet-software-factory integration suite reads these check runs. A
+# pull request that touches no file under watch-fixture/ gets no check run.
+on:
+  pull_request:
+    paths:
+      - 'watch-fixture/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 15
+      - run: |
+          case "$GITHUB_HEAD_REF" in
+            watch-red/*) echo "red fixture"; exit 1 ;;
+          esac
+  skipped:
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "never runs"
