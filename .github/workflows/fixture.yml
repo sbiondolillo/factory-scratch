@@ -2,7 +2,8 @@ name: fixture
 
 # Runs only by hand. One run leaves a completed, successful check run named
 # "fixture" on the commit it ran on. The dotnet-software-factory integration
-# test reads that check run; nothing else here runs a workflow.
+# test reads that check run. watch-fixture.yml is the one other workflow
+# here, and it runs on a pull request that touches watch-fixture/.
 on: workflow_dispatch
 
 jobs:
