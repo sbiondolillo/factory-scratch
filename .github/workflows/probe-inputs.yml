@@ -1,0 +1,24 @@
+# A probe: what the inputs expressions give on each trigger. Removed after the probe.
+name: probe-inputs
+
+on:
+  issues:
+    types: [labeled]
+  workflow_dispatch:
+    inputs:
+      issue:
+        description: The number of the issue.
+        required: true
+        type: number
+      ref:
+        description: The ref of the factory.
+        default: v0
+
+permissions: {}
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || (github.event.label.name == 'probe-inputs' && github.event.sender.login == github.repository_owner)
+    steps:
+      - run: echo "event=${{ github.event_name }} ref=[${{ inputs.ref || 'v0' }}] issue=[${{ inputs.issue || github.event.issue.number }}]"
