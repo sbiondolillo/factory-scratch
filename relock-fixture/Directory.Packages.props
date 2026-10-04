@@ -3,6 +3,6 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Gherkin" Version="35.0.0" />
+    <PackageVersion Include="Gherkin" Version="42.0.1" />
   </ItemGroup>
 </Project>
