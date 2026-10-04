@@ -17,7 +17,7 @@ jobs:
     if: github.event.label.name == 'review-feedback'
     steps:
       - run: |
-          echo "marker=BASE"
+          echo "marker=HEAD"
           echo "event=${{ github.event_name }}"
           echo "pr=${{ github.event.pull_request.number }}"
           echo "label=${{ github.event.label.name }}"
