@@ -1,2 +1,5 @@
-def area(r):
-    return 3.14 * r * r
+import math
+
+
+def area(radius):
+    return math.pi * radius * radius
