@@ -1,7 +1,0 @@
-# Temporary probe for dotnet-software-factory. Design B: the relock push uses a Dependabot secret.
-version: 2
-updates:
-  - package-ecosystem: "nuget"
-    directory: "/relock-fixture"
-    schedule:
-      interval: "weekly"
