@@ -4,9 +4,9 @@
     "net10.0": {
       "System.CommandLine": {
         "type": "Direct",
-        "requested": "[2.0.0, )",
-        "resolved": "2.0.0",
-        "contentHash": "Bjklzc5NoxqAGFi7BcGlY2TWAdB06Bq3a5sfRr3ubMRU80Mf98eyq3Y2UgR6xRV0TLznZmfe5T7mUjOunRNcdA=="
+        "requested": "[2.0.12, )",
+        "resolved": "2.0.12",
+        "contentHash": "FpW672e6qqrTd1EfKqsvUtFZaJWlTlszUR1o8tdakXhkzKbnEZVndtpfd4K3fUPCFcIs9UmcswMyYGJP1zp/rg=="
       }
     }
   }
