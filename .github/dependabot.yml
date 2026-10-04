@@ -1,4 +1,4 @@
-# Temporary probe for dotnet-software-factory. Control run: no relock workflow.
+# Temporary probe for dotnet-software-factory. Control run 2: no relock workflow.
 version: 2
 updates:
   - package-ecosystem: "nuget"
