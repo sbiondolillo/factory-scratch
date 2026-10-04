@@ -1,0 +1,35 @@
+name: relock-fixture-relock
+
+# Temporary probe, design B. On a Dependabot pull request that touches
+# relock-fixture/, it regenerates every lock file and pushes the change to the
+# pull request branch with the token in the Dependabot secret RELOCK_TOKEN.
+# A push with that token starts the pull_request workflows again.
+on:
+  pull_request:
+    paths:
+      - 'relock-fixture/**'
+
+permissions:
+  contents: read
+
+jobs:
+  relock:
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.RELOCK_TOKEN }}
+      - run: dotnet restore --force-evaluate
+        working-directory: relock-fixture
+      - run: |
+          if git diff --quiet; then
+            echo "lock files are current"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- '*packages.lock.json'
+          git commit -m "Regenerate the lock files" -m "[dependabot skip]"
+          git push
